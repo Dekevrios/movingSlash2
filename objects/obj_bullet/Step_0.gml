@@ -21,9 +21,9 @@ if instance_exists(obj_player){
         if instance_exists(creator){
             with creator{
                 is_stunned = true;
-                stun_duration = 120;
+                stun_duration = 50;
               
-                speed = 0;
+                change_state(stateEnemy.stun);
                 
                 show_debug_message("terkena stun");
             }

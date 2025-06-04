@@ -101,7 +101,10 @@ function state_stun(){
     image_blend = c_red;
     speed = 0;
     
+    is_stunned = (stun_duration > 0);
+    
     if(stun_duration <= 0){
+        is_stunned = false;
         change_state(stateEnemy.patrol);
         return;
     }
@@ -141,26 +144,31 @@ function change_state(new_state){
     
 }
 
-
-
-if !variable_instance_exists(id, "is_stunned"){
-    is_stunned =false;
-    stun_duration = 0;
+function get_stunned(duration){
+    stun_duration = duration;
+    change_state(stateEnemy.stun);
 }
 
-if is_stunned{
-    stun_duration -=1;
-    image_blend = c_red;
-    speed = 0;
-    kejar =false;
-    
-    if stun_duration <= 0{
-        is_stunned = false;
-        image_blend = c_white;
-        
-    }
-    
-}
+
+
+//if !variable_instance_exists(id, "is_stunned"){
+    //is_stunned =false;
+    //stun_duration = 0;
+//}
+//
+//if is_stunned{
+    //stun_duration -=1;
+    //image_blend = c_red;
+    //speed = 0;
+    //kejar =false;
+    //
+    //if stun_duration <= 0{
+        //is_stunned = false;
+        //image_blend = c_white;
+        //
+    //}
+    //
+//}
 
 
 
