@@ -113,6 +113,18 @@ function state_stun(){
 
 function state_execute(){
     //  armor enemy habis -> keluar trigger untuk execute -> player masuk execute trigger 
+    can_execute = true;
+    
+    if (instance_exists(obj_player) && distance_to_object(obj_player) < 30){
+        show_debug_message(" F to execute ")
+    }
+    
+    if (instance_exists(obj_player)){
+        target_x = obj_player.x;
+        target_y = obj_player.y;
+    }
+    
+    
 }
 
 function change_state(new_state){

@@ -10,6 +10,8 @@ else{
 }
 
 draw_text(x+5,y,hp)
-
 draw_text(x+5 ,y-22 ,armor);
 
+if (armor <= 1){
+    draw_text(x-20, y + 10, "Press F");
+}
