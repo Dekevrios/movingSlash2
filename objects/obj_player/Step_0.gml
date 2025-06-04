@@ -178,27 +178,6 @@ if(keyboard_check(ord("C"))){
         }
 }
 
-//if(keyboard_check(ord("C"))){
-    //
-    //is_defend = true;
-    //sprite_index = spr_defend;
-    //image_index = 0;
-    //show_debug_message("defend");
-    //
-    ////cek musuh dia rea defend
-    //var nearby_enemy = collision_circle(x,y,60,obj_enemy_parent, false,true);
-    //if (nearby_enemy != noone){
-        //nearby_enemy.get_stunned(30);
-    //}
-        //
-//}else{
-    //if is_defend{
-        //is_defend = false;
-        //sprite_index = spr_idleDown;
-        //show_debug_message("defend end")
-        //}
-//}
- 
 
 // =================================================//
 //                   ATTACK EVENT                   //

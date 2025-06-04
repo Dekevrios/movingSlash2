@@ -19,6 +19,8 @@ is_stunned = false;
 stun_duration =0;
 move_spd = 0.5;
 
+can_execute = false;
+
 // state
 enum stateEnemy{
     patrol,

@@ -9,5 +9,7 @@ else{
     draw_self();   
 }
 
-draw_text(x,y,hp)
+draw_text(x+5,y,hp)
+
+draw_text(x+5 ,y-22 ,armor);
 
