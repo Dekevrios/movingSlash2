@@ -223,7 +223,26 @@ if(mouse_check_button_pressed(mb_left) && !is_attacking && obj_player_control.ma
 //                 EXECUTE EVENT                    //
 // =================================================//
 
-if (keyboard_check(ord("F")) && !is_execute){
+if (keyboard_check_pressed(ord("F")) && !is_execute){
+    show_debug_message("f pressed");
+    //pause game -> player move berubah -> tunggu selesai -> game jalan kembali
+    var nearest_enemy = instance_nearest(x,y,obj_enemy_parent);
+    
+    if (nearest_enemy != noone && distance_to_object(nearest_enemy) < 40){
+        show_debug_message("state: " + string(nearest_enemy.state) + 
+        ", execute: " + string(nearest_enemy.can_execute));
+        
+        if (nearest_enemy.state == stateEnemy.execute && nearest_enemy.armor <= 2){
+            is_execute = true;
+            instance_destroy(nearest_enemy);
+            
+            // efek
+            
+            show_debug_message("enemy executed");
+            
+            alarm[3] = 30;
+        }
+    }
     
 }
 

@@ -20,6 +20,7 @@ stun_duration =0;
 move_spd = 0.5;
 
 can_execute = false;
+execute_min = 2
 
 // state
 enum stateEnemy{

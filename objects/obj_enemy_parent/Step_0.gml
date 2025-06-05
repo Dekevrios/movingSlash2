@@ -1,4 +1,8 @@
 
+if (variable_instance_exists(id, "armor") && armor <2 && state != stateEnemy.execute){
+    change_state(stateEnemy.execute);
+}
+
 state_timer++;
 if(shoot_cd > 0){
     shoot_cd--;
@@ -6,6 +10,7 @@ if(shoot_cd > 0){
 if (stun_duration > 0){
     stun_duration--;
 }
+
 
 
 
@@ -66,6 +71,8 @@ function state_chase(){
         return;
     }
     
+   
+    
 }
 
 function state_shoot(){
@@ -124,7 +131,9 @@ function state_execute(){
         target_y = obj_player.y;
     }
     
-    
+    if (armor > 2) {
+        change_state(stateEnemy.patrol);
+    }
 }
 
 function change_state(new_state){
@@ -149,67 +158,13 @@ function change_state(new_state){
             
             break;
         case stateEnemy.execute:
-            
+            can_execute = true;
             break;
-            
     }
-    
 }
+
 
 function get_stunned(duration){
     stun_duration = duration;
     change_state(stateEnemy.stun);
 }
-
-
-
-//if !variable_instance_exists(id, "is_stunned"){
-    //is_stunned =false;
-    //stun_duration = 0;
-//}
-//
-//if is_stunned{
-    //stun_duration -=1;
-    //image_blend = c_red;
-    //speed = 0;
-    //kejar =false;
-    //
-    //if stun_duration <= 0{
-        //is_stunned = false;
-        //image_blend = c_white;
-        //
-    //}
-    //
-//}
-
-
-
-// knockback
-//if(alarm[1] >= 0){
-    //
-    //target_x = x + kb_x;
-    //target_y = y +kb_y;
-//}
-
-
-//arah movement
-//var _hor = clamp(target_x - x, -1,1);
-//var _ver = clamp(target_y - y, -1, 1);
-
-//shoot bullet
-//if kejar == true{
-    //cd --;
-    //if cd <= 0{
-        //cd = 50;
-        //
-        //
-        //with instance_create_depth(x,y,depth,obj_bullet){
-            //creator = other;
-            //
-        //}
-        //
-    //}
-//}
-
-
-//move_and_collide(_hor * move_spd, _ver * move_spd, [tilemap, obj_enemy_parent]);
