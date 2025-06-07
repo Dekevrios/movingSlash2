@@ -71,6 +71,11 @@ function state_chase(){
         return;
     }
     
+    if (variable_instance_exists(id, "armor") && armor < 2){
+        change_state(stateEnemy.execute);
+        return;
+    }
+    
    
     
 }
@@ -131,7 +136,7 @@ function state_execute(){
         target_y = obj_player.y;
     }
     
-    if (armor > 2) {
+    if (variable_instance_exists(id, "armor") && armor <= 2) {
         change_state(stateEnemy.patrol);
     }
 }
