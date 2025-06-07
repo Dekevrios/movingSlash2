@@ -229,10 +229,9 @@ if (keyboard_check_pressed(ord("F")) && !is_execute){
     var nearest_enemy = instance_nearest(x,y,obj_enemy_parent);
     
     if (nearest_enemy != noone && distance_to_object(nearest_enemy) < 40){
-        show_debug_message("state: " + string(nearest_enemy.state) + 
-        ", execute: " + string(nearest_enemy.can_execute));
+        show_debug_message("execute: " + string(nearest_enemy.can_execute));
         
-        if (nearest_enemy.state == stateEnemy.execute && nearest_enemy.armor <= 2){
+        if (nearest_enemy.can_execute == true && nearest_enemy.armor <= 2){
             is_execute = true;
             instance_destroy(nearest_enemy);
             
