@@ -54,6 +54,7 @@
     {"id":{"name":"spr_defend","path":"sprites/spr_defend/spr_defend.yy",},},
     {"id":{"name":"spr_door","path":"sprites/spr_door/spr_door.yy",},},
     {"id":{"name":"spr_enemy1","path":"sprites/spr_enemy1/spr_enemy1.yy",},},
+    {"id":{"name":"spr_execute","path":"sprites/spr_execute/spr_execute.yy",},},
     {"id":{"name":"spr_idleDown","path":"sprites/spr_idleDown/spr_idleDown.yy",},},
     {"id":{"name":"spr_idleLeft","path":"sprites/spr_idleLeft/spr_idleLeft.yy",},},
     {"id":{"name":"spr_idleRight","path":"sprites/spr_idleRight/spr_idleRight.yy",},},

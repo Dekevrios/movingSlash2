@@ -55,6 +55,9 @@ switch (state) {
     case statePlayer.magic3:
         player_attack(3);
         break;
+    case statePlayer.execute:
+        
+        break;
     
 }
 
@@ -230,12 +233,17 @@ if (keyboard_check_pressed(ord("F")) && !is_execute){
     
     if (nearest_enemy != noone && distance_to_object(nearest_enemy) < 40){
         show_debug_message("execute: " + string(nearest_enemy.can_execute));
+     
         
         if (nearest_enemy.can_execute == true && nearest_enemy.armor <= 2){
             is_execute = true;
             instance_destroy(nearest_enemy);
             
             // efek
+            var _execute = instance_create_depth(x,y,0,obj_sword_mask);
+            _execute.image_angle = facing;
+            _execute.sprite_index = spr_execute;
+            
             
             show_debug_message("enemy executed");
             

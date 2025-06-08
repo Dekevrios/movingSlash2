@@ -73,7 +73,8 @@ enum statePlayer{
     dash,
     magic1,
     magic2,
-    magic3
+    magic3,
+    execute
 }
 enum playerMode{
     mode_mel,
