@@ -2,9 +2,13 @@
 //              WALK                 //
 // ================================= //
 
-
+if ( !can_move){
+    var _hor = 0;
+    var _ver = 0;
+}else{
     var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
     var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+}
 
 
 if (state == statePlayer.attack1 || state == statePlayer.attack2 || state == statePlayer.attack3) {
@@ -244,7 +248,7 @@ if (keyboard_check_pressed(ord("F")) && !is_execute){
             _execute.image_angle = facing;
             _execute.sprite_index = spr_execute;
             
-            
+            can_move = false;
             show_debug_message("enemy executed");
             
             alarm[3] = 30;

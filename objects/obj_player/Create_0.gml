@@ -6,6 +6,7 @@ player = obj_player_control;
 damage = 1;
 
 facing = 0;
+can_move = true;
 
 //attack combo
 is_attacking = false;
