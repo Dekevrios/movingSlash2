@@ -22,6 +22,8 @@ move_spd = 0.5;
 can_execute = false;
 execute_min = 2
 
+last_hit_by = noone;
+
 // state
 enum stateEnemy{
     patrol,
