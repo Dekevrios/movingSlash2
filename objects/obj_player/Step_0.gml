@@ -71,12 +71,6 @@ switch (state) {
 //=========================================//
 
 
-//function apply_buff(_type,_duration){
-    //switch(_type){
-       //
-        //
-    //}
-//}
 
 
 
@@ -133,111 +127,6 @@ if open_inventory = true{
     }
 }
 
-// =================================================//
-//                    DASH EVENT                    //
-// =================================================//
-
-//if (keyboard_check_pressed(vk_space) && state != statePlayer.dash && obj_player_control.mana >= mana_cost){
-    //obj_player_control.mana -= mana_cost;
-    //state = statePlayer.dash;
-    //dash_timer = dash_duration;
-    //dash_direction = point_direction(0,0,_hor,_ver);
-    //is_dashing = true;
-//}
-
-// =================================================//
-//                TELEKINESIS EVENT                 //
-// =================================================//
-
-//if keyboard_check_pressed(ord("V")){
-    //show_debug_message("key pressed");
-    //var rock = instance_nearest(x,y,obj_rock); //cek collision
-    //
-    //
-    //// ada batu
-    //if rock != noone && !rock.thrown{
-       //var distance = distance_to_point(rock.x,rock.y);
-        //if distance <= 100{
-            //var nearest_enemy = instance_nearest(x,y,obj_enemy1);
-        //
-        //
-            //if nearest_enemy != noone{
-                //rock.direction = point_direction(x,y,nearest_enemy.x,nearest_enemy.y); 
-                //rock.rock_spd = 6;
-                //rock.curr_distance = 0;
-                //rock.thrown = true;
-                //show_debug_message("Rock lempar : " + string(rock.direction));
-            //}
-        //}
-        //
-        //
-    //} else {
-    	//show_debug_message("no rock thrown");
-    //}
-    //
-    //
-//}
-
-// =================================================//
-//                   DEFEND EVENT                   //
-// =================================================//
-
-//if(keyboard_check(ord("C"))){
-    //if !is_defend{
-        //is_defend = true;
-        //sprite_index = spr_defend;
-        //image_index = 0;
-        //show_debug_message("defend");
-        //
-    //} 
-//}else {
-    //if is_defend{
-        //is_defend = false;
-        //sprite_index = spr_idleDown;
-        //show_debug_message("defend end")
-        //}
-//}
-
-
-// =================================================//
-//                   ATTACK EVENT                   //
-// =================================================//
-
-//if(mouse_check_button_pressed(mb_left) && !is_attacking && obj_player_control.mana >= mana_cost){
-    //show_debug_message("combo start : "+string(combo_count))
-        //obj_player_control.mana -= mana_cost;
-        //
-        //combo_count = (combo_count % combo_max) +1;
-        ////combo_count = clamp(combo_count,0,combo_max);
-        //combo_timer = combo_timeout;
-        //
-        //switch (combo_count) {
-            //case 1:
-                //if (current_mode == 0){
-                    //state = statePlayer.attack1;
-                //}else if(current_mode == 1){
-                    //state = statePlayer.magic1;
-                //}
-                //break;
-            //
-            //case 2:
-                //if (current_mode == 0){
-                    //state = statePlayer.attack2;
-                //}else if(current_mode == 1){
-                    //state = statePlayer.magic2;
-                //}
-                //break;
-            //
-            //case 3:
-                //if (current_mode == 0){
-                    //state = statePlayer.attack3;
-                //}else if(current_mode == 1){
-                    //state = statePlayer.magic3;
-                //}
-                //break;
-        //}
-        //
-    //}
 
 // =================================================//
 //                 EXECUTE EVENT                    //
@@ -271,7 +160,30 @@ if (keyboard_check_pressed(ord("F")) && !is_execute){
 }
 
 
+// =================================================//
+//                 BUFF ACTIVATED                   //
+// =================================================//
 
+//timer logic
+if (buff_active && buff_timer > 0){
+    buff_timer --;
+    
+    if(buff_timer <= 0){
+        switch (buff_type) {
+        	case "speed":
+                curr_spd = move_spd;
+                break;
+            case "attack":
+                curr_dmg = damage;
+                break;
+        }
+        
+        buff_active = false;
+        buff_type = "";
+        
+        show_debug_message("buff ended");
+    }
+}
 
 
 // +++++++++++++++++++++++++++++ INVENTORY ++++++++++++++++++++++++++

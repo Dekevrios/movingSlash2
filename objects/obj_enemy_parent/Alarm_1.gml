@@ -1,6 +1,13 @@
 image_blend = c_white;
 
 if(hp <= 0){
+    //buff share
+    if (instance_exists(obj_player)){
+        with (obj_player){
+            apply_buff(other.buff_type,other.buff_amount,other.buff_duration);
+        }
+    }
+    
     instance_destroy();
     
 }else {

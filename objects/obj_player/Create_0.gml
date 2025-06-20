@@ -1,9 +1,11 @@
 move_spd = 1.2;
+curr_spd = move_spd;
 tilemap = layer_tilemap_get_id("tile_col");
 
 player = obj_player_control;
 
 damage = 1;
+curr_dmg = damage;
 
 facing = 0;
 can_move = true;
@@ -15,11 +17,6 @@ combo_timeout = 30;
 combo_max= 3;
 combo_count = 0;
 can_combo = false;
-
-//attack combo revisi
-a_combo[0] = spr_slash;
-a_combo[1] = spr_slash2
-a_combo[2] = spr_slash3
 
 //attack mana
 mana_cost = 1;
@@ -69,15 +66,40 @@ buff_active = false;
 speed_buff = false;
 damage_buff = false; 
 health_buff = false;
+buff_timer = 0;
+buff_type = "";
+
 
 //function
 
 
-nama_function = function(){
-    
-}
 
 // ++++++++++++++++++ FUNCTION +++++++++++++++++++++++
+// =================================================//
+//                    BUFF FUNCTION                 //
+// =================================================//
+apply_buff = function(_type,_amount,_duration){
+    switch(_type){
+        case "health":
+            obj_player_control.hp_total = min(obj_player_control.hp + _amount,obj_player_control.hp_total);
+            break;
+        case "speed":
+            move_spd = curr_spd * _amount;
+            break;
+        case "attack":
+            damage = curr_dmg * _amount;
+            break;
+        
+    }
+    
+    buff_active = true;
+    buff_timer = _duration;
+    buff_type = _type;
+    
+    show_debug_message("buff : " + _type);
+}
+
+
 
 // =================================================//
 //                   ATTACK FUNCTION                //
@@ -152,10 +174,11 @@ player_dash = function(){
     is_dashing = false;
 }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // =================================================//
-//                  IDLE FUNCTION                   //
+//             IDLE FUNCTION + STATE                //
 // =================================================//
-
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 player_idle = function(_hor, _ver){
     
     
@@ -188,7 +211,9 @@ player_idle = function(_hor, _ver){
             obj_player_control.mana_regen_timer = 0;
         }
     
-    // telekinesis
+// =================================================//
+//                TELEKINESIS EVENT                 //
+// =================================================//
     if keyboard_check_pressed(ord("V")){
         show_debug_message("key pressed");
         var rock = instance_nearest(x,y,obj_rock); //cek collision
@@ -216,14 +241,16 @@ player_idle = function(_hor, _ver){
         
     }
     
-    // defend event
+
+// =================================================//
+//                   DEFEND EVENT                   //
+// =================================================//
     if(keyboard_check(ord("C"))){
         if !is_defend{
             is_defend = true;
             sprite_index = spr_defend;
             image_index = 0;
             show_debug_message("defend");
-            
         } 
     }else {
         if is_defend{
@@ -233,7 +260,9 @@ player_idle = function(_hor, _ver){
             }
     }
     
-    //dash event
+// =================================================//
+//                    DASH EVENT                    //
+// =================================================//
      if (keyboard_check_pressed(vk_space) && state != statePlayer.dash && obj_player_control.mana >= mana_cost){
         obj_player_control.mana -= mana_cost;
         state = statePlayer.dash;
@@ -242,7 +271,10 @@ player_idle = function(_hor, _ver){
         is_dashing = true;
     }
     
-    //attack
+    
+// =================================================//
+//                   ATTACK EVENT                   //
+// =================================================//
     if(mouse_check_button_pressed(mb_left) && !is_attacking && obj_player_control.mana >= mana_cost){
         show_debug_message("combo start : "+string(combo_count))
         obj_player_control.mana -= mana_cost;
@@ -280,11 +312,11 @@ player_idle = function(_hor, _ver){
     }
     
 }
-
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // =================================================//
-//                  WALK FUNCTION                   //
+//             WALK FUNCTION + STATE                //
 // =================================================//
-
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 player_walk = function(_hor, _ver){
     
     // walk --> idle
@@ -307,7 +339,9 @@ player_walk = function(_hor, _ver){
     //reset mana
    obj_player_control.mana_regen_timer = 0;
     
-    // telekinesis
+// =================================================//
+//                TELEKINESIS EVENT                 //
+// =================================================//
     if keyboard_check_pressed(ord("V")){
         show_debug_message("key pressed");
         var rock = instance_nearest(x,y,obj_rock); //cek collision
@@ -334,7 +368,9 @@ player_walk = function(_hor, _ver){
         
         
     }
-    
+// =================================================//
+//                    DASH EVENT                    //
+// =================================================//
     if (keyboard_check_pressed(vk_space) && state != statePlayer.dash && obj_player_control.mana >= mana_cost){
         obj_player_control.mana -= mana_cost;
         state = statePlayer.dash;
@@ -343,7 +379,9 @@ player_walk = function(_hor, _ver){
         is_dashing = true;
     }
     
-    //attack
+// =================================================//
+//                   ATTACK EVENT                   //
+// =================================================//
     if(mouse_check_button_pressed(mb_left) && !is_attacking && obj_player_control.mana >= mana_cost){
         show_debug_message("combo start : "+string(combo_count))
             obj_player_control.mana -= mana_cost;
