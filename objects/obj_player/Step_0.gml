@@ -143,7 +143,9 @@ if (keyboard_check_pressed(ord("F")) && !is_execute){
         
         if (nearest_enemy.can_execute == true && nearest_enemy.armor <= 2){
             is_execute = true;
-            instance_destroy(nearest_enemy);
+            nearest_enemy.executed = true;
+            nearest_enemy.hp = 0;
+            nearest_enemy.alarm[1] = 20;
             
             // efek
             var _execute = instance_create_depth(x,y,0,obj_sword_mask);

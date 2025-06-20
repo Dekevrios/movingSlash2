@@ -81,13 +81,13 @@ buff_type = "";
 apply_buff = function(_type,_amount,_duration){
     switch(_type){
         case "health":
-            obj_player_control.hp_total = min(obj_player_control.hp + _amount,obj_player_control.hp_total);
+            obj_player_control.hp = min(obj_player_control.hp + _amount,obj_player_control.hp_total);
             break;
         case "speed":
-            move_spd = curr_spd * _amount;
+            curr_spd = move_spd * _amount;
             break;
         case "attack":
-            damage = curr_dmg * _amount;
+            curr_dmg = damage * _amount;
             break;
         
     }
@@ -237,7 +237,6 @@ player_idle = function(_hor, _ver){
         } else {
         	show_debug_message("no rock thrown");
         }
-        
         
     }
     
