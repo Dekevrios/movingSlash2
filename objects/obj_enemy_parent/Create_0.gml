@@ -118,7 +118,13 @@ state_stun = function(){
     
 }
 
+// =================================== //
+//          DEATH FUNCTION             //
+// =================================== //
 
+state_death = function(){
+    
+}
 
 
 change_state = function(new_state){
@@ -161,7 +167,8 @@ enum stateEnemy{
     chase,
     shoot,
     stun,
-    execute
+    execute,
+    death
 }
 
 state = stateEnemy.patrol;

@@ -73,6 +73,8 @@
     {"id":{"name":"spr_slash","path":"sprites/spr_slash/spr_slash.yy",},},
     {"id":{"name":"spr_slash2","path":"sprites/spr_slash2/spr_slash2.yy",},},
     {"id":{"name":"spr_slash3","path":"sprites/spr_slash3/spr_slash3.yy",},},
+    {"id":{"name":"spr_slime","path":"sprites/spr_slime/spr_slime.yy",},},
+    {"id":{"name":"spr_slimeAtt","path":"sprites/spr_slimeAtt/spr_slimeAtt.yy",},},
     {"id":{"name":"spr_spawn","path":"sprites/spr_spawn/spr_spawn.yy",},},
     {"id":{"name":"spr_walkDown","path":"sprites/spr_walkDown/spr_walkDown.yy",},},
     {"id":{"name":"spr_walkLeft","path":"sprites/spr_walkLeft/spr_walkLeft.yy",},},

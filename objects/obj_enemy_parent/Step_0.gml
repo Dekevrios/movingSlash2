@@ -37,6 +37,9 @@ switch (state) {
     case stateEnemy.stun:
         state_stun();
         break;
+    case stateEnemy.death:
+        state_death();
+        break;
 }
 
 // =================================== //
