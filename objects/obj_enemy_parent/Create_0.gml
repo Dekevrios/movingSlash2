@@ -9,8 +9,8 @@ kb_x = 0;
 kb_y = 0
 
 get_damage = false;
-shoot_cd = 0;
-shoot_cd_max = 50;
+attack_cd = 0;
+attack_cd_max = 50;
 
 //cd = 50;
 kejar = false;
@@ -61,7 +61,7 @@ state_chase = function(){
     target_y = obj_player.y;
     
     if (distance_to_object(obj_player) < distance_player *0.8){
-        change_state(stateEnemy.shoot);
+        change_state(stateEnemy.attack);
         return;
     }
     
@@ -71,7 +71,7 @@ state_chase = function(){
 //          SHOOT FUNCTION             //
 // =================================== //
 
-state_shoot = function(){
+state_attack = function(){
     // player terdeksi -> pindah ke state shoot -> spawn bullet 
     
     if (!instance_exists(obj_player) || distance_to_object(obj_player) > distance_player * 1.2){
@@ -82,8 +82,8 @@ state_shoot = function(){
     target_x = obj_player.x;
     target_y = obj_player.y;
     
-    if shoot_cd <= 0{
-        shoot_cd =  shoot_cd_max;
+    if attack_cd <= 0{
+        attack_cd =  attack_cd_max;
     
         with instance_create_depth(x,y,depth,obj_bullet){
             creator = other;
@@ -126,13 +126,13 @@ state_death = function(){
     
 }
 
-
+//===========================================//
 change_state = function(new_state){
     switch (state){
         case stateEnemy.stun:
             image_blend = c_white;
             break;
-        case stateEnemy.shoot:
+        case stateEnemy.attack:
             image_blend = c_white;
             break;
     }
@@ -165,7 +165,7 @@ get_stunned = function(duration){
 enum stateEnemy{
     patrol,
     chase,
-    shoot,
+    attack,
     stun,
     execute,
     death

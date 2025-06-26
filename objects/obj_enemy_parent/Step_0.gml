@@ -11,8 +11,8 @@ if (variable_instance_exists(id, "armor") && armor <= 1.8 ){
 // =================================== //
 
 state_timer++;
-if(shoot_cd > 0){
-    shoot_cd--;
+if(attack_cd > 0){
+    attack_cd--;
 }
 if (stun_duration > 0){
     stun_duration--;
@@ -30,8 +30,8 @@ switch (state) {
         state_chase();
         break;
     
-    case stateEnemy.shoot:
-        state_shoot();
+    case stateEnemy.attack:
+        state_attack();
         break;
     
     case stateEnemy.stun:

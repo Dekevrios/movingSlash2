@@ -1,17 +1,24 @@
+//facing attack
+if (instance_exists(creator)){
+    x = creator.x;
+    y = creator.y;
+    
+    var _dir = point_direction(x,y,obj_player.x,obj_player.y);
+    x += lengthdir_x(0,_dir);
+    y += lengthdir_y(0,_dir);
+}
 
-motion_set(target,speed);
 
-if instance_exists(obj_player){
+if (instance_exists(obj_player)){
+    
     if place_meeting(x,y,obj_player) && !obj_player.is_dashing && !obj_player.is_defend{
-        obj_player_control.hp -= 1;
-        instance_destroy();
+        obj_player_control.hp -= damage;
+        //instance_destroy();
     }else if(place_meeting(x,y,obj_player) && obj_player.is_dashing){
-        instance_destroy();
+        //instance_destroy();
     }else if(place_meeting(x,y,obj_player) && obj_player.is_defend){
         show_debug_message("player parry")
-        instance_destroy();
-        
-        //stun enemy
+        //instance_destroy();
         if instance_exists(creator){
             with creator{
                 is_stunned = true;
@@ -22,7 +29,6 @@ if instance_exists(obj_player){
                 show_debug_message("terkena stun");
             }
         }
-           
     }
+    
 }
-
