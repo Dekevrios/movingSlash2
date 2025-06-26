@@ -2,6 +2,8 @@
 event_inherited();
 
 attack_range = 10;
+facing = 0;
+
 
 // melee attack
 state_attack = function(){
@@ -12,6 +14,10 @@ state_attack = function(){
     
     target_x = obj_player.x;
     target_y = obj_player.y;
+    
+    if (instance_exists(obj_player)) {
+        facing = point_direction(x, y, obj_player.x, obj_player.y);
+    }
     
     if (attack_cd <= 0 && distance_to_object(obj_player) < attack_range ){
         attack_cd = attack_cd_max;

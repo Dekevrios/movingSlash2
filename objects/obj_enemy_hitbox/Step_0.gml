@@ -3,11 +3,12 @@ if (instance_exists(creator)){
     x = creator.x;
     y = creator.y;
     
-    var _dir = point_direction(x,y,obj_player.x,obj_player.y);
+    var _dir = creator.facing;
     x += lengthdir_x(0,_dir);
     y += lengthdir_y(0,_dir);
+    
+    image_angle = _dir;
 }
-
 
 if (instance_exists(obj_player)){
     
