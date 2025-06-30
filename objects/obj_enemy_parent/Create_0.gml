@@ -123,7 +123,17 @@ state_stun = function(){
 // =================================== //
 
 state_death = function(){
+    // ke kill ->  death ->  ngasih buff -> destroy
+    show_debug_message("state death");
     
+    if (instance_exists(obj_player) && executed = true){
+        with (obj_player){
+            apply_buff(other.buff_type,other.buff_amount,other.buff_duration);
+        }
+    }
+    
+    
+    instance_destroy();
 }
 
 //===========================================//

@@ -17,6 +17,16 @@ if (instance_exists(obj_player)){
         //instance_destroy();
     }else if(place_meeting(x,y,obj_player) && obj_player.is_dashing){
         //instance_destroy();
+        if instance_exists(creator){
+            with creator{
+                is_stunned = true;
+                stun_duration = 50;
+                
+                change_state(stateEnemy.stun);
+                
+                show_debug_message("terkena stun");
+            }
+        }
     }else if(place_meeting(x,y,obj_player) && obj_player.is_defend){
         show_debug_message("player parry")
         //instance_destroy();

@@ -69,7 +69,6 @@ health_buff = false;
 buff_timer = 0;
 buff_type = "";
 
-
 //function
 
 // =================================================//

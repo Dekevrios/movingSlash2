@@ -9,6 +9,9 @@ mana_regen_delay = 60; //delay time
 mana_regen_plus = 1;
 
 targetEnter = noone;
+player_x = obj_player.x;
+player_y = obj_player.y;
+
 
 //item
 blue = 0;
