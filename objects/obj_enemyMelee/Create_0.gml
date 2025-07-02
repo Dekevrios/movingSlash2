@@ -1,6 +1,8 @@
 // Inherit the parent event
 event_inherited();
 
+attack_hit ={};  //namanya struct
+
 attack_range = 10;
 facing = 0;
 
@@ -21,6 +23,8 @@ state_attack = function(){
     
     if (attack_cd <= 0 && distance_to_object(obj_player) < attack_range ){
         attack_cd = attack_cd_max;
+        
+        attack_hit = {};
         
         var _attack = instance_create_depth(x,y,depth,obj_enemy_hitbox);
         _attack.creator = id;
