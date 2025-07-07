@@ -131,8 +131,6 @@ state_death = function(){
             apply_buff(other.buff_type,other.buff_amount,other.buff_duration);
         }
     }
-    
-    
     instance_destroy();
 }
 
