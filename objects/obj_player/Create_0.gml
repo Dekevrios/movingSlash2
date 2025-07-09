@@ -110,8 +110,39 @@ test_shoot = function(){
     
 }
 
+// skill storm
 
-// ++++++++++++++++++ FUNCTION +++++++++++++++++++++++
+skill_storm = function(){
+   
+    if (keyboard_check_pressed(ord("M"))){
+        var plasma_storm = 5;
+        var player_dist = 30;
+        var plasma_spd = 5;
+        
+        
+        // make ball
+        for(var i = 0; i < plasma_storm; i++){
+            var spawn = (360 / plasma_storm) * i;
+            
+            var spawn_x = x + lengthdir_x(player_dist, spawn);
+            var spawn_y = y + lengthdir_y(player_dist,spawn);
+            
+            with instance_create_depth(x,y,depth,obj_plasma){
+                creator = other.id;
+                direction = spawn;
+                image_angle = spawn;
+                speed = plasma_spd;
+                
+                
+            }
+            
+        }
+        
+    }
+}
+
+
+// ++++++++++++++++++ FUNCTION +++++++++++++++++++++//
 // =================================================//
 //                    BUFF FUNCTION                 //
 // =================================================//
@@ -320,6 +351,7 @@ player_idle = function(_hor, _ver){
 //                     TRIGGER                      //
 // =================================================//
     test_shoot();
+    skill_storm();
     
     if keyboard_check_pressed(ord("V")){
         tele_function();
@@ -372,6 +404,7 @@ player_walk = function(_hor, _ver){
 //                     TRIGGER                      //
 // =================================================//
     test_shoot();
+    skill_storm();
     
     if keyboard_check_pressed(ord("V")){
        tele_function();
