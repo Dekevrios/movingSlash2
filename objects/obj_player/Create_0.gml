@@ -52,7 +52,6 @@ selected_mode = playerMode.mode_mel;
 is_execute = false;
 
 
-
 //ui mode
 mode_ui = true;
 
@@ -92,6 +91,25 @@ defend_enter = function(){
                 }
         }
     }
+
+// attack bullet
+test_shoot = function(){
+    if (mouse_check_button_pressed(mb_right)){
+        
+         with instance_create_depth(x,y,depth,obj_plasma){
+            creator = other.id;
+            direction = other.facing 
+            speed = 5;
+            
+            x += lengthdir_x(10,direction);
+            y += lengthdir_y(10, direction);
+            image_angle = direction;
+        }
+        
+     }   
+    
+}
+
 
 // ++++++++++++++++++ FUNCTION +++++++++++++++++++++++
 // =================================================//
@@ -301,6 +319,8 @@ player_idle = function(_hor, _ver){
 // =================================================//
 //                     TRIGGER                      //
 // =================================================//
+    test_shoot();
+    
     if keyboard_check_pressed(ord("V")){
         tele_function();
     }
@@ -351,6 +371,8 @@ player_walk = function(_hor, _ver){
 // =================================================//
 //                     TRIGGER                      //
 // =================================================//
+    test_shoot();
+    
     if keyboard_check_pressed(ord("V")){
        tele_function();
     }
