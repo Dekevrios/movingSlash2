@@ -7,30 +7,32 @@ with (obj_enemy_parent){
         //damage
         if (variable_instance_exists(id, "hp")){
             hp -= other.dmg;
-            
+            get_damage = true;
             show_debug_message("kena dmg");
         }
         
         //slow 
         in_field = true;
         field_id = other.id;
-        if (!variable_instance_exists(id, "original_spd")){
-            original_spd = speed;
+        if (!variable_instance_exists(id, "new_spd")){
+            move_spd = new_spd;
         }
+        new_spd = move_spd - other.slow_move;
+       
         
-        speed = original_spd * other.slow_move;
-        image_blend = c_aqua;
+        show_debug_message("kena slow ")
+        //image_blend = c_aqua;
         
         
     }else if(variable_instance_exists(id, "in_field") && in_field && 
-              variable_instance_exists(id, "field_id") && field_id &&
-              field_id == other.id){
+             variable_instance_exists(id, "field_id") && field_id == other.id){
         
         in_field = false;
         field_id = noone;
         
-        if (variable_instance_exists(id, "original_spd")) {
-            speed = original_spd;
+        if (variable_instance_exists(id, "move_spd")) {
+            new_spd = move_spd;
+            show_debug_message("speed kembali");
         }
         
         

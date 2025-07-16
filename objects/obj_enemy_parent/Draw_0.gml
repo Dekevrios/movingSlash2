@@ -11,6 +11,7 @@ else{
 
 draw_text(x+5,y,hp)
 draw_text(x+5 ,y-22 ,armor);
+draw_text(x-40, y+5, new_spd);
 
 if (armor <= 1){
     draw_text(x-20, y + 10, "Press F");
