@@ -26,7 +26,7 @@ execute_min = 2
 //slow skill
 in_field = false;
 field_id = noone;
-move_spd = adjust_spd;
+original_spd = speed;
 
 last_hit_by = noone;
 

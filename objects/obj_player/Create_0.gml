@@ -154,7 +154,7 @@ slow_field = function(){
             radius = 64;
             
             alarm[0] = 120;
-            alarm[1] = dmg;
+            alarm[1] = dmg_frame;
         }
         
         

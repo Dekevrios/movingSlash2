@@ -1,22 +1,24 @@
 //cek enemy di area
 with (obj_enemy_parent){
-    var _dist = point_direction(x,y,other.x,other.y);
+    var _dist = point_distance(x,y,other.x,other.y);
     
     //enemy di dalam area
     if (_dist <= other.radius){
         //damage
         if (variable_instance_exists(id, "hp")){
             hp -= other.dmg;
+            
+            show_debug_message("kena dmg");
         }
         
         //slow 
         in_field = true;
         field_id = other.id;
-        if (!variable_instance_exists(id, "adjust_spd")){
-            move_spd = adjust_spd;
+        if (!variable_instance_exists(id, "original_spd")){
+            original_spd = speed;
         }
         
-        adjust_spd = move_spd * 0.25;
+        speed = original_spd * other.slow_move;
         image_blend = c_aqua;
         
         
@@ -27,12 +29,12 @@ with (obj_enemy_parent){
         in_field = false;
         field_id = noone;
         
-        if (variable_instance_exists(id, "move_spd")) {
-            adjust_spd = move_spd;
+        if (variable_instance_exists(id, "original_spd")) {
+            speed = original_spd;
         }
         
         
     }
     
 }
- alarm[1] = dmg;
+ alarm[1] = dmg_frame;
