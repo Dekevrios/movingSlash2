@@ -51,6 +51,8 @@ selected_mode = playerMode.mode_mel;
 //execution mode
 is_execute = false;
 
+// slow field 
+slow_skill_active = false;
 
 //ui mode
 mode_ui = true;
@@ -140,6 +142,25 @@ skill_storm = function(){
         
     }
 }
+
+// skill slow field
+slow_field = function(){
+    if (keyboard_check_pressed(ord("L"))){
+        
+        
+        //buat obj
+        with instance_create_depth(mouse_x,mouse_y,depth,obj_slow_field){
+            creator = other.id;
+            radius = 64;
+            
+            alarm[0] = 120;
+            alarm[1] = dmg;
+        }
+        
+        
+    }
+}
+
 
 
 // ++++++++++++++++++ FUNCTION +++++++++++++++++++++//
@@ -352,6 +373,7 @@ player_idle = function(_hor, _ver){
 // =================================================//
     test_shoot();
     skill_storm();
+    slow_field();
     
     if keyboard_check_pressed(ord("V")){
         tele_function();
@@ -405,6 +427,7 @@ player_walk = function(_hor, _ver){
 // =================================================//
     test_shoot();
     skill_storm();
+    slow_field();
     
     if keyboard_check_pressed(ord("V")){
        tele_function();

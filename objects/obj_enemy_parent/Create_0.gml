@@ -17,11 +17,16 @@ kejar = false;
 
 is_stunned = false;
 stun_duration =0;
-move_spd = 0.5;
+adjust_spd = 0.5;
 
 can_execute = false;
 executed = false;
 execute_min = 2
+
+//slow skill
+in_field = false;
+field_id = noone;
+move_spd = adjust_spd;
 
 last_hit_by = noone;
 
