@@ -8,6 +8,7 @@ with (obj_enemy_parent){
         if (variable_instance_exists(id, "hp")){
             hp -= other.dmg;
             get_damage = true;
+            alarm[1] = 10;
             show_debug_message("kena dmg");
         }
         
@@ -35,8 +36,9 @@ with (obj_enemy_parent){
             show_debug_message("speed kembali");
         }
         
-        
     }
     
 }
+
+
  alarm[1] = dmg_frame;

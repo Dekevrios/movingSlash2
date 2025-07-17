@@ -50,3 +50,15 @@ if (state != stateEnemy.stun){
     var _ver = clamp(target_y - y, -1,1);
     move_and_collide(_hor * move_spd, _ver * move_spd, [tilemap, obj_enemy_parent]);
 }
+
+
+// speed 
+if(place_meeting(x,y,obj_slow_field)){
+    new_spd = move_spd/2
+}else{
+    new_spd = move_spd;
+}
+
+
+
+
